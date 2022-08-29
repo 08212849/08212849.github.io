@@ -93,14 +93,46 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>#第一章 git认识<br>git是分布式版本控制系统。多人能在多地同时修改文件，因版本库在个人电脑，所以不需要联网就能修改并保留修改记录，可以随时查看过去的修改记录。多人间通过推送修改的方式到每个人的版本库，通常有一台充当“中央服务器”的电脑，用来方便“交换”大家的修改。<br>#第二章 git基本命令<br>###创建版本库<br>    mkdir learngit<br>    cd learngit<br>    git init &#x2F;&#x2F;通过git init命令把当前目录变成git可以管理的仓库<br>###添加文件到版本库<br>   注：所有的版本控制系统，智能跟踪文本文件的改动。windows自带的记事本编辑时会在每个文件开头添加0xefbbbf（十六进制）的字符，会遇到很多问题。</p>
-<p>第一步，添加文件到仓库</p>
+        <p>#第一章 git认识<br>git是分布式版本控制系统。多人能在多地同时修改文件，因版本库在个人电脑，所以不需要联网就能修改并保留修改记录，可以随时查看过去的修改记录。多人间通过推送修改的方式到每个人的版本库，通常有一台充当“中央服务器”的电脑，用来方便“交换”大家的修改。<br>#第二章 git基本命令<br>###创建版本库</p>
+<pre><code>mkdir learngit
+cd learngit
+git init //通过git init命令把当前目录变成git可以管理的仓库
+</code></pre>
+<p>###添加文件到版本库<br>   注：所有的版本控制系统，智能跟踪文本文件的改动。windows自带的记事本编辑时会在每个文件开头添加0xefbbbf（十六进制）的字符，会遇到很多问题。</p>
+<p>第一步，添加文件到仓库（可多次添加文件）</p>
 <pre><code>git add read.txt
 </code></pre>
 <p>第二步，提交文件到仓库</p>
 <pre><code>git commit -m &quot;说明改动&quot;
 </code></pre>
-<p>#第三章</p>
+<p>###查看<br>当前仓库状态</p>
+<pre><code>git status
+</code></pre>
+<p>查看修改内容</p>
+<pre><code>git diff（difference）
+</code></pre>
+<p>使用git diff命令时涉及的概念</p>
+<ul>
+<li><p>workspace:是本地项目的工作目录，属于本地代码更新但未执行<strong>git add</strong>命令时的状态，working tree的状态也随之更新。</p>
+</li>
+<li><p>index:索引文件，是连接working tree和commit的桥梁，当使用<strong>git add</strong>命令登记后，index file的内容会改变，这时index file 和working tree同步</p>
+</li>
+<li><p>local repository：是本地仓库，使用<strong>git commit</strong>命令时将index里的内容提交到本地仓库</p>
+</li>
+<li><p>remote repository：是远程仓库，当使用<strong>git push</strong>命令时会将本地仓库代码上传至远程仓库，完成整个代码的上传工作</p>
+<p>git diff readme.txt &#x2F;&#x2F;查看workspace和index的差别</p>
+<p>git diff –cached:查看index和local repository的差别</p>
+<p>git diff HEAD:查看workspace和local repository（代码最新提交版本）的差别</p>
+</li>
+</ul>
+<p>显示从最近到最远的所有提交日志</p>
+<pre><code>git log //commit id(版本号)
+</code></pre>
+<p>回退</p>
+<pre><code>git reset --hard HEAD^
+</code></pre>
+<p>HEAD表示当前版本，上一个版本为HEAD^,往上n个版本就是HEAD~n。</p>
+<p>回到最新版本可以输入 <code>git reset --hard 1040a</code>  输入版本号前几位就可以</p>
 
       
     </div>
